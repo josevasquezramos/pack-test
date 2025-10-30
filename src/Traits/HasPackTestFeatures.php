@@ -2,8 +2,8 @@
 
 namespace JoseVasquezRamos\PackTest\Traits;
 
-use JoseVasquezRamos\PackTest\Models\UserProfile;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use JoseVasquezRamos\PackTest\Models\UserProfile;
 
 trait HasPackTestFeatures
 {
