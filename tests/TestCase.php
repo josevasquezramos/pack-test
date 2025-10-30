@@ -3,8 +3,8 @@
 namespace JoseVasquezRamos\PackTest\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use JoseVasquezRamos\PackTest\PackTestServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {

@@ -2,9 +2,9 @@
 
 namespace JoseVasquezRamos\PackTest;
 
+use JoseVasquezRamos\PackTest\Commands\PackTestCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use JoseVasquezRamos\PackTest\Commands\PackTestCommand;
 
 class PackTestServiceProvider extends PackageServiceProvider
 {
