@@ -35,7 +35,7 @@ class PackTestServiceProvider extends PackageServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../database/migrations/add_columns_to_users_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_add_columns_to_users_table.php'),
+                __DIR__.'/../database/migrations/add_columns_to_users_table.php' => database_path('migrations/'.date('Y_m_d_His', time()).'_add_columns_to_users_table.php'),
             ], 'pack-test-migrations');
             $this->publishes([
                 base_path('vendor/spatie/laravel-permission/config/permission.php') => config_path('permission.php'),
