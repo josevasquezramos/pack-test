@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace JoseVasquezRamos\PackTest;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use VendorName\Skeleton\Commands\SkeletonCommand;
+use JoseVasquezRamos\PackTest\Commands\PackTestCommand;
 
-class SkeletonServiceProvider extends PackageServiceProvider
+class PackTestServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -16,10 +16,10 @@ class SkeletonServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('skeleton')
+            ->name('pack-test')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_migration_table_name_table')
-            ->hasCommand(SkeletonCommand::class);
+            ->hasMigration('create_pack_test_table')
+            ->hasCommand(PackTestCommand::class);
     }
 }
