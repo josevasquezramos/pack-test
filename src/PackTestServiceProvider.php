@@ -10,11 +10,6 @@ class PackTestServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
         $package
             ->name('pack-test')
             ->hasConfigFile()
@@ -34,12 +29,21 @@ class PackTestServiceProvider extends PackageServiceProvider
         parent::boot();
 
         if ($this->app->runningInConsole()) {
+            
             $this->publishes([
                 base_path('vendor/spatie/laravel-permission/config/permission.php') => config_path('permission.php'),
                 base_path('vendor/spatie/laravel-permission/database/migrations/create_permission_tables.php.stub') => database_path('migrations/'.date('Y_m_d_His', time() + 1).'_create_permission_tables.php'),
-                base_path('vendor/laravel/sanctum/database/migrations/2019_12_14_000001_create_personal_access_tokens_table.php') => database_path('migrations/'.date('Y_m_d_His', time() + 2).'_create_personal_access_tokens_table.php'),
+                base_path('vendor/spatie/laravel-permission/database/migrations/add_teams_fields.php.stub') => database_path('migrations/'.date('Y_m_d_His', time() + 2).'_add_teams_fields.php'),
                 __DIR__.'/../database/migrations/add_columns_to_users_table.php' => database_path('migrations/'.date('Y_m_d_His', time()).'_add_columns_to_users_table.php'),
-            ], 'pack-test-migrations');
+            ], 'pack-test-publish-dependencies');
+
+            
+            $sanctumMigration = glob(base_path('vendor/laravel/sanctum/database/migrations/*_create_personal_access_tokens_table.php'));
+            if (!empty($sanctumMigration)) {
+                $this->publishes([
+                    $sanctumMigration[0] => database_path('migrations/' . date('Y_m_d_His', time() + 3) . '_create_personal_access_tokens_table.php'),
+                ], 'pack-test-publish-dependencies');
+            }
         }
     }
 }
